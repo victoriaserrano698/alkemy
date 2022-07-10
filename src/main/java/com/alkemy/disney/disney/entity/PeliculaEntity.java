@@ -43,8 +43,8 @@ public class PeliculaEntity {
         private Set<PersonajeEntity> personajes= new HashSet<>();
 
     @ManyToOne(cascade = {
-          /*  CascadeType.PERSIST,
-            CascadeType.MERGE */
+            CascadeType.PERSIST,
+            CascadeType.MERGE
     })
 
     @JoinTable(name = "genero_pelicula",

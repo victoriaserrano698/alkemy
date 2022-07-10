@@ -19,10 +19,10 @@ public class GeneroEntity {
     private String nombre;
     private String imagen;
 
-    @Column(name = "pelicula_id",nullable = true)
-    private Long peliculaId;
-
-    @ManyToMany(mappedBy = "peliculas", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genero", fetch = FetchType.EAGER)
     @JoinColumn(name = "pelicula_id", insertable = true, updatable = true)
     private List<PeliculaEntity> peliculas= new ArrayList<>();
+
+    @Column(name = "pelicula_id",nullable = true)
+    private Long peliculaId;
 }
