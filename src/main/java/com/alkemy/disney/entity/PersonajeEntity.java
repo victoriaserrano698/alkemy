@@ -1,4 +1,4 @@
-package com.alkemy.disney.disney.entity;
+package com.alkemy.disney.entity;
 
 import lombok.Data;
 
@@ -23,9 +23,9 @@ public class PersonajeEntity {
     private String historia;
 
     @ManyToMany(mappedBy = "personajes", fetch = FetchType.EAGER)
-    @JoinColumn(name = "pelicula_id", insertable = true, updatable = true)
+    @JoinColumn(name = "pelicula_id", insertable = false, updatable = false) /* FK */
     private List<PeliculaEntity> peliculas= new ArrayList<>();
 
-    @Column(name = "pelicula_id",nullable = true)
+    @Column(name = "pelicula_id",nullable = false)
     private Long peliculaId;
 }

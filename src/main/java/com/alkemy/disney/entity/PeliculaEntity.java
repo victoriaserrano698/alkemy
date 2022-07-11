@@ -1,4 +1,4 @@
-package com.alkemy.disney.disney.entity;
+package com.alkemy.disney.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,11 +26,11 @@ public class PeliculaEntity {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate fechaCreacion;
 
-    /*private enum calificacion;
+    /* enum de calificacion;
     * */
 
 
-    @Column(name = "personaje_id",nullable = true)
+    @Column(name = "personaje_id",nullable = false)
     private Long personajeId;
 
     @ManyToMany(cascade = {
@@ -42,11 +42,13 @@ public class PeliculaEntity {
         inverseJoinColumns = @JoinColumn(name = "personaje_id"))
         private Set<PersonajeEntity> personajes= new HashSet<>();
 
+    @Column(name = "genero_id",nullable = false)
+    private Long generoId;
+
     @ManyToOne(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
-
     @JoinTable(name = "genero_pelicula",
             joinColumns = @JoinColumn(name = "pelicula_id"),
             inverseJoinColumns = @JoinColumn(name = "genero_id"))
