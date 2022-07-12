@@ -1,10 +1,10 @@
-package com.alkemy.disney.entity;
+package com.alkemy.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="personaje")
@@ -12,9 +12,9 @@ import java.util.List;
 public class PersonajeEntity {
 
     @Id
-    @Column
+    @Column(name = "personaje_id",nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Long personajeId;
 
     private String imagen;
     private String nombre;
@@ -23,9 +23,7 @@ public class PersonajeEntity {
     private String historia;
 
     @ManyToMany(mappedBy = "personajes", fetch = FetchType.EAGER)
-    @JoinColumn(name = "pelicula_id", insertable = false, updatable = false) /* FK */
-    private List<PeliculaEntity> peliculas= new ArrayList<>();
+    private Set<PeliculaEntity> peliculas= new HashSet<>();
+    /* @JoinColumn(name = "pelicula_id", insertable = false, updatable = false) FK */
 
-    @Column(name = "pelicula_id",nullable = false)
-    private Long peliculaId;
 }
